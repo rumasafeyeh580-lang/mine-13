@@ -5,11 +5,12 @@ import torch
 from torchvision import transforms
 from modules.bg_removers.base_bg_remover import BaseBGRemover
 from modules.bg_removers.birefnet_model.birefnet import BiRefNet
+from config.settings import BackgroundRemovalConfig
 
 
 class BiRefNetBGRemover(BaseBGRemover):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, settings: BackgroundRemovalConfig):
+        super().__init__(settings)
         self._bg_remover: BiRefNet | None = None
         torch.set_float32_matmul_precision(['high', 'highest'][0])
         self._transform_image = transforms.Compose([
@@ -41,4 +42,4 @@ class BiRefNetBGRemover(BaseBGRemover):
         mask = pred_pil.resize(result_image.size)
         result_image.putalpha(mask)
 
-        return result_image
+        return result_image[:3], mask
