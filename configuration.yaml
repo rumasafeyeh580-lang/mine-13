@@ -13,9 +13,9 @@ trellis:
   sparse_structure_cfg_strength: 5.75
   slat_steps: 20
   slat_cfg_strength: 2.4
-  mode: stochastic
+  mode: multidiffusion
   num_oversamples: 3
-  multiview: true
+  multiview: false
   gpu: 0
 qwen:
   base_model_path: Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors
