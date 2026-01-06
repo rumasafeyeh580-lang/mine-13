@@ -7,7 +7,6 @@ import time
 from typing import Optional
 
 from PIL import Image
-import pyspz
 import torch
 
 from config.settings import settings, SettingsConf
@@ -16,7 +15,6 @@ from logger_config import logger
 from schemas import GenerateRequest, GenerateResponse, TrellisParams, TrellisRequest, TrellisResult
 from modules.image_edit.qwen_edit_module import QwenEditModule
 from modules.background_removal.ben2_module import BEN2BackgroundRemovalService
-from modules.background_removal.rmbg20_module import RMBG2BackgroundRemovalService
 from modules.gs_generator.trellis_manager import TrellisService
 from modules.utils import image_grid, secure_randint, set_random_seed, decode_image, to_png_base64, save_files
 
@@ -33,13 +31,9 @@ class GenerationPipeline:
         self.qwen_edit = QwenEditModule(settings.qwen)
 
         # Initialize background removal module
-        if self.settings.background_removal.model_id == "PramaLLC/BEN2":
-            self.rmbg = BEN2BackgroundRemovalService(settings.background_removal)
-        elif self.settings.background_removal.model_id == "miner-bit/bg_rm2":
-            self.rmbg = RMBG2BackgroundRemovalService(settings.background_removal)
-        else:
-            raise ValueError(f"Unsupported background removal model: {self.settings.background_removal.model_id}")
-
+        
+        self.rmbg = BEN2BackgroundRemovalService(settings.background_removal)
+        
         # Initialize prompting libraries for both modes
         self.prompting_library_base = PromptingLibrary.from_file(settings.qwen.prompt_path_base)
         self.prompting_library_multistage = PromptingLibrary.from_file(settings.qwen.prompt_path_multistage)
