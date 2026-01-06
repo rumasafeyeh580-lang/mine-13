@@ -22,7 +22,7 @@ class Ben2BGRemover(BaseBGRemover):
 
     def load_model(self) -> None:
         self._bg_remover = BEN_Base.from_pretrained("PramaLLC/BEN2").to(self.device)
-        self._bg_remover.eval().half()
+        self._bg_remover.eval()
 
     def unload_model(self) -> None:
         del self._bg_remover

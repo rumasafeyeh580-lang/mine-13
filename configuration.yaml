@@ -13,17 +13,17 @@ trellis:
   sparse_structure_cfg_strength: 5.75
   slat_steps: 20
   slat_cfg_strength: 2.4
-  mode: multidiffusion
+  mode: stochastic
   num_oversamples: 3
-  multiview: false
+  multiview: true
   gpu: 0
 qwen:
-  base_model_path: Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors
+  base_model_path: Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors
   model_path: Qwen/Qwen-Image-Edit-2509
   lora_path: lightx2v/Qwen-Image-Lightning
   height: 1024
   width: 1024
-  num_inference_steps: 8
+  num_inference_steps: 4
   true_cfg_scale: 1.0
   prompt_path_base: prompts/qwen_edit_prompt_base.json
   prompt_path_multistage: prompts/qwen_edit_prompt_multistage_v2.json
@@ -40,4 +40,3 @@ background_removal:
   padding_percentage: 0.2
   limit_padding: true
   gpu: 0
-
