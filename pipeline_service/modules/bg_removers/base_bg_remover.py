@@ -48,6 +48,7 @@ class BaseBGRemover(ABC):
         Shutdown the BaseBGRemover.
         """
         logger.info("BaseBGRemover closed.")
+        self.unload_model()
 
     def is_image_valid(self, image: Image) -> bool:
         """ Function that checks if the image after background removal is empty or barely filled in with image data. """
