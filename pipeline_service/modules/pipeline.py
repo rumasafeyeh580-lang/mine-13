@@ -14,7 +14,7 @@ from config.prompting_library import PromptingLibrary
 from logger_config import logger
 from schemas import GenerateRequest, GenerateResponse, TrellisParams, TrellisRequest, TrellisResult
 from modules.image_edit.qwen_edit_module import QwenEditModule
-from modules.bg_removers.ben2_bg_remover import Ben2BGRemover
+from modules.bg_removers.birefnet_bg_remover import BiRefNetBGRemover
 from modules.gs_generator.trellis_manager import TrellisService
 from modules.utils import image_grid, secure_randint, set_random_seed, decode_image, to_png_base64, save_files
 
@@ -32,7 +32,7 @@ class GenerationPipeline:
 
         # Initialize background removal module
         
-        self.rmbg = Ben2BGRemover(settings.background_removal)
+        self.rmbg = BiRefNetBGRemover(settings.background_removal)
         
         # Initialize prompting libraries for both modes
         self.prompting_library_base = PromptingLibrary.from_file(settings.qwen.prompt_path_base)
