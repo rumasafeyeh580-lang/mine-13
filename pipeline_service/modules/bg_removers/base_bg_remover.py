@@ -15,6 +15,10 @@ class BaseBGRemover(ABC):
         self.settings = settings
 
         self.device = f"cuda:{settings.gpu}" if torch.cuda.is_available() else "cpu"
+        
+        self.padding_percentage = self.settings.padding_percentage
+        self.limit_padding = self.settings.limit_padding
+        self.output_size = self.settings.output_image_size
 
     @abstractmethod
     def load_model(self) -> None:
