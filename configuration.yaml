@@ -9,13 +9,13 @@ output:
   output_dir: generated_outputs
 trellis:
   model_id: jetx/trellis-image-large
-  sparse_structure_steps: 12  # Increased from 8 for better structure quality
-  sparse_structure_cfg_strength: 6.0  # Slightly increased for better guidance
-  slat_steps: 28  # Increased from 20 for finer detail generation
-  slat_cfg_strength: 2.6  # Slightly increased for better detail guidance
+  sparse_structure_steps: 8
+  sparse_structure_cfg_strength: 5.75
+  slat_steps: 20
+  slat_cfg_strength: 2.4
   mode: stochastic
-  num_oversamples: 5  # Increased from 3 for better sample selection and quality
-  multiview: false
+  num_oversamples: 3
+  multiview: true
   gpu: 0
 qwen:
   base_model_path: Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors
