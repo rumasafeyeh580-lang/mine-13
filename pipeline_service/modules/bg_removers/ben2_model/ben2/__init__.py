@@ -1,0 +1,4 @@
+from modules.bg_removers.ben2_model.ben2.modeling_ben2 import BEN_Base
+from modules.bg_removers.ben2_model.ben2.auto import AutoModel
+
+__version__ = "0.0.1"
