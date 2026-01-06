@@ -9,12 +9,12 @@ output:
   output_dir: generated_outputs
 trellis:
   model_id: jetx/trellis-image-large
-  sparse_structure_steps: 8
-  sparse_structure_cfg_strength: 5.75
-  slat_steps: 20
-  slat_cfg_strength: 2.4
+  sparse_structure_steps: 12
+  sparse_structure_cfg_strength: 6.0
+  slat_steps: 28
+  slat_cfg_strength: 2.6
   mode: stochastic
-  num_oversamples: 3
+  num_oversamples: 5
   multiview: false
   gpu: 0
 qwen:
